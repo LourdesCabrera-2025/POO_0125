@@ -5,6 +5,9 @@
  */
 //---------------------------------------
 
+import Usuarios.Usuario;
+
+import java.awt.*;
 import java.util.Scanner;
 
 /**
@@ -22,15 +25,69 @@ public class Main {
          * Datos -> selección , es un dato que permitirá almacenará
          */
         int seleccion;
+        String nickname, pin, cuenta;
+        double saldo;
         Scanner accion = new Scanner(System.in);
+        Usuario usuarios = new Usuario();
 
-        System.out.println("$$$$ Bienvenido a tu ATM Online $$$$ ");
-        System.out.println("----------------------------------");
-        System.out.println("1. Ingresar a mi cuenta \n" +
-                "2. Crear cuenta de banco");
-        System.out.println("----------------------------------");
-        System.out.println("Seleccione una accion → ");
-        seleccion = accion.nextInt();
+        while (true) {
 
+            try {
+                do {
+                    System.out.println("$$$$ Bienvenido a tu ATM Online $$$$ ");
+                    System.out.println("----------------------------------");
+                    System.out.println("1. Ingresar a mi cuenta \n" +
+                            "2. Crear cuenta de banco");
+                    System.out.println("----------------------------------");
+                    System.out.println("Seleccione una accion → ");
+                    seleccion = accion.nextInt();
+
+                    switch (seleccion) {
+
+                        case 1:
+
+                            break;
+                        case 2:
+                            accion.nextLine(); // Limpiar buffer
+                            System.out.println("♥♥ Gracias por tu preferencia, por favor registra tu usuario en nuestro sistema");
+                            System.out.println("---------------------------------------------------------------------------------");
+                            System.out.println("Por favor ingresa tu nickname → ");
+                            nickname = accion.nextLine();
+                            usuarios.setNickname(nickname);
+                            System.out.println("Por favor toma nota de tu ID : ");
+                            String base = nickname.length() >= 3 ? nickname.substring(0, 3).toLowerCase() : nickname.toLowerCase();
+                            int numero = (int) (Math.random() * 90000) + 10000;
+                            String idGenerado = base + numero;
+                            usuarios.setId_Usuario(idGenerado);
+                            System.out.println("ID Usuario → " + usuarios.getId_Usuario());
+                            System.out.println("Por favor toma nota de tu Pin: ");
+                            String pinCuenta = String.valueOf((int) (Math.random() * 90000) + 10000);
+                            usuarios.setPin(pinCuenta);
+                            System.out.println("Pin secreto → " + usuarios.getPin());
+                            System.out.println("Por favor ingresa el monto a depositar → ");
+                            saldo = accion.nextDouble();
+                            usuarios.setSaldo(saldo);
+                            accion.nextLine();
+                            System.out.println("Por favor ingresa tu cuenta → ");
+                            cuenta = accion.nextLine();
+                            usuarios.setCuenta(cuenta);
+
+                            break;
+                        default:
+                            System.out.println("Seleccion de menu invalida, por favor selecciona algo valido");
+                            break;
+                    }
+                } while (seleccion!= 1 && seleccion != 2);
+            } catch (Exception e) {
+                System.out.println("Error : " + e.getMessage());
+                accion.nextLine();
+            }
+        }
     }
+
+    public static void Menu() {
+
+        // Main despues del logeo
+    }
+
 }

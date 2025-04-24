@@ -1,5 +1,9 @@
 package Usuarios;
 
+import com.sun.tools.javac.Main;
+
+import java.awt.*;
+
 /**
  * @author LourdesCabrera-2025
  * Usuarios. Usuario: en esta clase se guardan los atributos, métodos
@@ -127,4 +131,28 @@ public class Usuario {
     public String getCuenta() {
         return cuenta;
     }
+
+
+    public boolean Autenticarse (String pin)
+    {
+        try {
+            if (getPin().equals(pin)) {
+                System.out.println("Ingreso válido del pin.....Bienvenido al sistema" + getId_Usuario());
+                return true;
+            } else {
+                System.out.println("Error al ingresar pin...");
+               return false;
+            }
+        } catch (Exception e)
+        {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
+    }
+    public void ConsultarSaldo() {
+
+        System.out.println("Su saldo es de : " + getSaldo());
+    }
+
+
 }
