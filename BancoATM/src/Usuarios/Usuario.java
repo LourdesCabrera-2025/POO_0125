@@ -137,7 +137,7 @@ public class Usuario {
     {
         try {
             if (getPin().equals(pin)) {
-                System.out.println("Ingreso válido del pin.....Bienvenido al sistema" + getId_Usuario());
+                System.out.println("Ingreso válido del pin.....Bienvenido al sistema →" + getId_Usuario());
                 return true;
             } else {
                 System.out.println("Error al ingresar pin...");

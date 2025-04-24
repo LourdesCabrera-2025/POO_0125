@@ -45,6 +45,18 @@ public class Main {
                     switch (seleccion) {
 
                         case 1:
+                            while (true) {
+                                do {
+                                    accion.nextLine();
+                                    System.out.println("Ingrese su pin → ");
+                                    pin = accion.next();
+
+                                } while (!usuarios.Autenticarse(pin));
+                                Menu();
+                                break;
+
+
+                            }
 
                             break;
                         case 2:
@@ -68,16 +80,17 @@ public class Main {
                             saldo = accion.nextDouble();
                             usuarios.setSaldo(saldo);
                             accion.nextLine();
-                            System.out.println("Por favor ingresa tu cuenta → ");
-                            cuenta = accion.nextLine();
-                            usuarios.setCuenta(cuenta);
-
+                            System.out.println("Generando numero de cuenta → ");
+                            long numerocuenta = (long) (Math.random() * 1_000_000_000_000L);
+                            usuarios.setCuenta(String.valueOf(String.format("%012d", numerocuenta)));
+                            System.out.println("N° Cuenta bancaria → " + usuarios.getCuenta());
+                            System.out.println("---------------------------------------------------");
                             break;
                         default:
                             System.out.println("Seleccion de menu invalida, por favor selecciona algo valido");
                             break;
                     }
-                } while (seleccion!= 1 && seleccion != 2);
+                } while (seleccion != 1 && seleccion != 2);
             } catch (Exception e) {
                 System.out.println("Error : " + e.getMessage());
                 accion.nextLine();
