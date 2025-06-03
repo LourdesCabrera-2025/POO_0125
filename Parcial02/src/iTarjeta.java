@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public interface iTarjeta {
+public interface iTarjeta {
+     boolean validarTarjeta();
+     double actualizarSaldo(double montoCompra);
+     void calcularRecompensa(double montoCompra);
+     void imprimir();
 }
