@@ -1,5 +1,9 @@
 import java.time.LocalDate;
 
+
+/**
+ * @author Lourdes Isabel Cabrera
+ */
 public abstract class TarjetaCredito implements iTarjeta{
 
     private String nombreTitular;
